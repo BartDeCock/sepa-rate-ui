@@ -24,8 +24,6 @@ export class AppComponent {
   }
 
   getUsername() {
-    console.log(this.cookieService.get('user'));
-    console.log(JSON.parse(this.cookieService.get('user')));
     return JSON.parse(this.cookieService.get('user')).username;
   }
 }
