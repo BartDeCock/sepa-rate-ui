@@ -21,7 +21,7 @@
   </thead>
   <tbody>
   <tr *ngFor="let separation of separations | async">
-    <td><a [routerLink]="['/separation', 'id']">{{separation.separatedRegionName}}</a></td>
+    <td><a [routerLink]="['/separation', separation.id]">{{separation.separatedRegionName}}</a></td>
     <td>{{separation.country}}</td>
     <td><div [innerHTML]="separation.argumentation | keepHtml"></div></td>
   </tr>

@@ -8,6 +8,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {SeparationModule} from './separation/separation.module';
 import {UserModule} from './user/user.module';
 import {CookieModule} from 'ngx-cookie';
+import {RatingModule} from './rating/rating.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {CookieModule} from 'ngx-cookie';
     HttpClientModule,
     UserModule,
     SeparationModule,
+    RatingModule,
     //  App routing module should always be last in list. This module contains the fallback paths
     AppRoutingModule
   ],
