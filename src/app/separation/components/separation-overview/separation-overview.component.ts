@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SeparationService} from '../../services/separation.service';
 import {Router} from '@angular/router';
-import {CookieService} from 'ngx-cookie';
 import {Observable} from 'rxjs';
 import {NgForm} from '@angular/forms';
 
@@ -14,11 +13,11 @@ export class SeparationOverviewComponent implements OnInit {
   private username: any;
   separations: Observable<any[]>;
 
-  constructor(private separationService: SeparationService, private router: Router, private cookieService: CookieService) {
+  constructor(private separationService: SeparationService, private router: Router) {
   }
 
   ngOnInit() {
-    const user = this.cookieService.get('user');
+    const user = localStorage.getItem('user');
     if (!user) {
       this.router.navigateByUrl('/login');
     } else {

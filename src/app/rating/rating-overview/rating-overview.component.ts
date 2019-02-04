@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {SeparationService} from '../../separation/services/separation.service';
 import {Router} from '@angular/router';
-import {CookieService} from 'ngx-cookie';
 
 @Component({
   selector: 'app-rating-overview',
@@ -14,11 +13,13 @@ export class RatingOverviewComponent implements OnInit {
   separations: Observable<any[]>;
   userCountry;
 
-  constructor(private separationService: SeparationService, private router: Router, private cookieService: CookieService) {
+  constructor(private separationService: SeparationService, private router: Router) {
   }
 
   ngOnInit() {
-    const user = this.cookieService.get('user');
+    const subscription = this.separationService.getAttack().subscribe(() => subscription.unsubscribe());
+
+    const user = localStorage.getItem('user');
     if (!user) {
       this.router.navigateByUrl('/login');
     } else {

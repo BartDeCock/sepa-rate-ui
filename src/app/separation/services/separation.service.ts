@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
 
@@ -20,6 +20,10 @@ export class SeparationService {
   }
 
   getSeparation(id): Observable<any> {
-    return this.httpClient.get(`${environment.backendUrl} / separation / ${id}`);
+    return this.httpClient.get(`${environment.backendUrl}/separation/${id}`);
+  }
+
+  getAttack() {
+    return this.httpClient.get(`${environment.backendUrl}/get/attack`, {headers: {'AUTH_DATA': localStorage.getItem('user')}});
   }
 }
