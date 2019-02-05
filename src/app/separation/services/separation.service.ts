@@ -15,6 +15,10 @@ export class SeparationService {
     return this.httpClient.post(`${environment.backendUrl}/separations/${username}`, filter, {withCredentials: true});
   }
 
+  getRateableSeparations(username): Observable<any> {
+    return this.httpClient.get(`${environment.backendUrl}/separations/${username}`);
+  }
+
   getAllSeparations(): Observable<any> {
     return this.httpClient.get(`${environment.backendUrl}/separations`);
   }

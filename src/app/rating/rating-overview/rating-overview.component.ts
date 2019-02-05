@@ -24,11 +24,7 @@ export class RatingOverviewComponent implements OnInit {
     } else {
       this.username = JSON.parse(user).username;
       this.userCountry = JSON.parse(user).country;
-      this.separations = this.separationService.getAllSeparations();
+      this.separations = this.separationService.getRateableSeparations(this.username);
     }
-  }
-
-  isUsersCountry(country: string) {
-    return country.toLowerCase() === this.userCountry.toLowerCase();
   }
 }

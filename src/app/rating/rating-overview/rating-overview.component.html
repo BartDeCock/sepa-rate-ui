@@ -11,10 +11,10 @@
   </thead>
   <tbody>
   <tr *ngFor="let separation of separations | async">
-    <td *ngIf="isUsersCountry(separation.country)">{{separation.separatedRegionName}}</td>
-    <td *ngIf="isUsersCountry(separation.country)">{{separation.country}}</td>
-    <td *ngIf="isUsersCountry(separation.country)"><div [innerHTML]="separation.argumentation | keepHtml"></div></td>
-    <td *ngIf="isUsersCountry(separation.country)"><a href="#">RATE</a></td>
+    <td>{{separation.separatedRegionName}}</td>
+    <td>{{separation.country}}</td>
+    <td><div [innerHTML]="separation.argumentation | keepHtml"></div></td>
+    <td><a href="#">RATE</a></td>
   </tr>
   </tbody>
 </table>
