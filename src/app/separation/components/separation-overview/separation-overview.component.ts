@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {SeparationService} from '../../services/separation.service';
 import {Router} from '@angular/router';
-import {CookieService} from 'ngx-cookie';
 import {Observable} from 'rxjs';
 import {NgForm} from '@angular/forms';
+import {AuthenticationService} from '../../../user/services/authentication.service';
 
 @Component({
   selector: 'app-separation-overview',
@@ -14,15 +14,14 @@ export class SeparationOverviewComponent implements OnInit {
   private username: any;
   separations: Observable<any[]>;
 
-  constructor(private separationService: SeparationService, private router: Router, private cookieService: CookieService) {
+  constructor(private separationService: SeparationService, private router: Router, private authService: AuthenticationService) {
   }
 
   ngOnInit() {
-    const user = this.cookieService.get('user');
-    if (!user) {
+    if (!this.authService.isAuthenticated()) {
       this.router.navigateByUrl('/login');
     } else {
-      this.username = JSON.parse(user).username;
+      this.username = this.authService.credentials.userName;
       this.separations = this.separationService.getSeparations(this.username);
     }
   }

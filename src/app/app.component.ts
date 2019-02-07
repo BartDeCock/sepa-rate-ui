@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {CookieService} from 'ngx-cookie';
 import {Router} from '@angular/router';
+import {AuthenticationService} from './user/services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -10,20 +10,19 @@ import {Router} from '@angular/router';
 export class AppComponent {
   title = 'sepa-rate-ui';
 
-  constructor(private cookieService: CookieService, private router: Router) {
+  constructor(private authService: AuthenticationService, private router: Router) {
   }
 
   isLoggedIn() {
-    return this.cookieService.get('user');
+    return this.authService.isAuthenticated();
   }
 
   logOut() {
-    this.cookieService.remove('user');
-    this.cookieService.remove('HACKME');
+    this.authService.logout();
     this.router.navigateByUrl('/login');
   }
 
   getUsername() {
-    return JSON.parse(this.cookieService.get('user')).username;
+    return this.authService.credentials.userName;
   }
 }
